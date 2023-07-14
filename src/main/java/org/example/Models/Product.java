@@ -105,4 +105,5 @@ public class Product implements Comparable<Product> {
 }
 
 
-//    Comparable<Product> compareTo = (o1) -> this.quantity - o1.getQuantity();
+
+//    Function<Product> compareTo = (o1) -> this.quantity - o1.getQuantity();

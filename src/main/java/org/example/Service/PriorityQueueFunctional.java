@@ -21,7 +21,7 @@ public class PriorityQueueFunctional {
                 priorityQueueSale.offer(product);
             });
         });
-        System.out.println(priorityQueueSale);
+        priorityQueueSale.forEach(System.out::println);
 
     }
 
@@ -30,7 +30,6 @@ public class PriorityQueueFunctional {
         while(priorityQueueSale.peek() != null) {
            updateAvailableUnit();
            System.out.println(priorityQueueSale.poll());
-
         }
     }
 

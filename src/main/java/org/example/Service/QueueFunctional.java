@@ -22,8 +22,9 @@ public class QueueFunctional {
 
     public static void removeCustomerFromQueue() {
         updateAvailableUnit();
-        fifoQueue.poll();
+        System.out.println(fifoQueue.poll());
         fifoQueue.forEach(System.out::println);
+
     }
 
 

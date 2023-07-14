@@ -2,6 +2,7 @@ package org.example.Models;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BiPredicate;
 
 import static org.example.Models.Store.productGroup;
 
@@ -28,18 +29,19 @@ public class Customer {
         return cartItems;
     }
 
+    static BiPredicate<Integer, Integer> checkAvailabilityOfProduct = (availableQuantity, quantityRequested) -> availableQuantity < quantityRequested;
+
     public List<Product> selectProducts(Customer customer, int key, int quantity) {
         try{
             Product product = productGroup.get(key);
 
-            //TODO: Try tenary here
-            if(Integer.parseInt(product.getAvailableUnit()) < quantity) {
+            if(checkAvailabilityOfProduct.test(Integer.parseInt(product.getAvailableUnit()), quantity)) {
                 System.out.println("Please check the available unit on the product label and make another choice");
                 return null;
+            } else {
+                product.setQuantity(quantity);
+                cartItems.add(product);
             }
-
-            product.setQuantity(quantity);
-            cartItems.add(product);
 
         } catch (NullPointerException e) {
             System.out.println("Exception: " + e.getMessage());
